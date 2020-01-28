@@ -1,0 +1,23 @@
+extends base.pug
+block content 
+    h1 #{tableTitle} 
+    table
+        tr
+        th Id
+        th Name
+        th Country Code
+        th District
+        th Population
+        th Population percentage
+        for city in cityList
+            tr
+                include city.pug
+                td= city.pop_percentage
+                td 
+                    a(href='/city/edit/'+city.ID) 
+                        img(src="/public/edit18.png")
+                td 
+                    a(href='/city/delete/'+city.ID) 
+                        img(src="/public/delete_black_18x18.png")
+    a(href="/city/add-city-post")
+        button(type="button") Add new city
